@@ -1,0 +1,111 @@
+h1 {
+  left: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+h2 {
+  left: 10px;
+  font-weight: 100;
+  text-align: center;
+  top: 30px;
+  font-size: 2em;
+}
+
+h3 {
+  top: 50px;
+  font-size: 1em;
+  left: 10px;
+  text-align: center;
+}
+
+/* Remove .incident fill CSS */
+.hover {
+  fill: yellow;
+  /* opacity: 0.5; */
+}
+
+#sliderContainer {
+  text-align: left;
+  padding-left: 700px;
+}
+#titlegraph {
+  text-align: left;
+  padding-left: 400px;
+}
+
+#dgraph {
+  text-align: left;
+  padding-left: 300px;
+}
+
+.d3-tip {
+  line-height: 2;
+  padding: 12px;
+  background: rgba(29, 29, 29, 0.8);
+  color: #fff;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+#timeslide {
+  text-align: center;
+}
+
+input[type="range"] {
+  width: 300px;
+}
+
+#range {
+  font-size: 25px;
+  font-weight: bolder;
+  padding-left: 120px;
+}
+
+.element {
+  display: inline-block;
+  width: 49%;
+  height: 55%;
+  background: #ebebeb;
+  float: left;
+  padding: 15px 12px 15px 15px;
+}
+#blocker {
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  background: #ffffff;
+  /* float: left; */
+  /* padding: 15px 12px 15px 15px; */
+}
+
+#smallblocker {
+  display: inline-block;
+  width: 100%;
+  height: 10px;
+  background: #ffffff;
+  /* float: left; */
+  /* padding: 15px 12px 15px 15px; */
+}
+#navv {
+  position: fixed;
+  width: 100%;
+}
+
+#left {
+  width: 55%;
+}
+
+#right {
+  width: 43%;
+}
+
+#mid {
+  width: 2%;
+  background: #ffffff;
+}
+
+#instructions {
+  text-align: center;
+  color: rgba(0, 102, 255, 0.788);
+}

@@ -1,0 +1,318 @@
+<html>
+  <head>
+    <title>DataViz A3 - Jasmine Widodo</title>
+
+    <script src="http://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+    <script src="d3-tip.js"></script>
+    <script src="d3-legend.js"></script>
+
+    <script src="happy_index.geojson"></script>
+
+    <link rel="stylesheet" href="report_style.css" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <style></style>
+  </head>
+  <body>
+    <nav id="navv" class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+      <div
+        class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"
+      >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"></li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Visualization</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="report.html">Write-up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="thanks.html">Thank You</a>
+          </li>
+        </ul>
+      </div>
+      <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="index.html"
+          >Assignment 3: Interactive Visualization</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target=".dual-collapse2"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link">Jasmine Widodo</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <br />
+    <div id="blocker"></div>
+    <h2>The Geography of Happiness</h2>
+    <p></p>
+    <h5 style="text-align: center;">Project Write-up</h5>
+    <br />
+
+    <div class="wrapper">
+      <div class="posts">
+        <div class="text">
+          
+          <h5>Data Domain</h5>
+          <p>
+            When looking at the dataset as a user only looking at the country,
+            rank and score variables, here are some questions I had:
+            <ul>
+                <li>Is there an overall worldwide trend in change in happiness scores over the years?</li>
+                <li>Are there any patterns regarding happiness scores between the different countries or regions? </li>
+                <li>Are tropical countries happier?</li>
+                <li>Are people in the US or in Indonesia happier overall? (I’m Indonesian)</li>
+                <li>How has Indonesia’s happiness score changed over the years?</li>
+                </ul>
+          </p>
+          <br>
+          <h5>Visualization Goals</h5>
+          <p>
+            I also asked a friend to look at it and I noted down the focal points and user needs. Through my visualization, users should be able to: 
+            <ul>
+                <li>Compare scores of a country over the years </li>
+                <li>Compare scores of a country and their neighboring regions</li>
+                <li>Know what rank a particular country has for that year</li>
+                <li>Big picture view of the world’s scores over the years </li>
+                <li>Look at the distribution of happiness scores on a map for a particular year</li>
+                </ul>
+          </p>
+          <br>
+          <h5>Visualization Features</h5> <p></p>
+        
+          <p>
+            When looking at the dataset as a user only looking at the country,
+            rank and score variables, here are some questions I had:
+            <ul><p></p>
+              <p></p> <li><span >Choropleth Map</span><p></p>
+                    <ol style="list-style-type: circle;">
+                      <p></p><li><span >Description&nbsp;</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >Map that displays the world map of all countries. Countries will be shaded according to the happiness score</span></li>
+                            </ul>
+                        </li>
+                        <p></p>    <li><span >Requirements</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >Needs a way to portray information like country name and rank as well through a tooltip when a specific country 
+                                    is selected to maximize expressiveness of data by using these interactive visualization techniques</span></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+               <p></p>
+               <p></p>  <li><span >Slider</span><p></p>
+                    <ol style="list-style-type: circle;">
+                      <p></p>    <li><span >Description&nbsp;</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >User can input by sliding the year that they want the data to display on the map. They will be able to compare and contrast the 
+                                    happiness scores of the world map over the years or look at the trend in score for a specific country&nbsp;</span></li>
+                            </ul>
+                        </li>
+                        <p></p>  <li><span >Size&nbsp;</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >The slider has to be obvious and has to have a year title so that the user can see what year&rsquo;s data is currently being displayed</span></li>
+                            </ul>
+                        </li>
+                        <p></p> <li><span >Position</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >The slider should be positioned properly to ensure that it does not get in the way of the map and scale</span></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li><p></p>
+                <li><span >Tooltip</span><p></p>
+                    <ol style="list-style-type: circle;">
+                      <p></p><li><span >Description</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >The tooltip should be able to have a pop up showing more details of a country when the country is selected. It should show the 
+                                    country name and happiness score and rank for that particular year to convey more information. This is a good use of the interactive 
+                                    visualization technique as it adds another dimension to an otherwise static choropleth map</span></li>
+                            </ul>
+                        </li>
+                        <p></p><li><span >Position</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >The position of the tooltip could either be dynamic or just be on one side (ex. top left) of the graph. I ended up going with 
+                                    having the tooltip a certain offset away from the current position of the cursor, however this is talked about more in the future work part of this assignment in more detail</span></li>
+                            </ul>
+                        </li>
+                        <p></p><li><span >Color change</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >During selection or while hovering over a country, I think it makes sense to change the color of the country on selection so that the user knows which segment they are selecting on as boundaries are not always as clear. I decided on yellow as it is distinguishable from blue to show that that is the current selection</span></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+                <p></p>
+                <li><span >Legend</span><p></p>
+                    <ol style="list-style-type: circle;">
+                        <li><span >Description</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >A legend is needed in order for users to see what approximate score each country has if they are not currently hovering or selecting a country. This would be useful when looking at it through the lens of looking at a world map and the overall distribution of scores rather than for an individual country since for individual ones, the tooltip can be used. This helps make the data easier to digest</span></li>
+                            </ul>
+                        </li>
+                        <p></p><li><span >Color</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >The color is a singular color in different shades since it is a continuous dataset and is sequential in color scale instead of diverging because there is no midpoint. I decided to do a single hue (range of blues) to show that the darker the blue, the higher the happiness score which through research and asking other classmates, seems intuitive</span></li>
+                            </ul>
+                        </li>
+                        <p></p><li><span >Position</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >The position of the scale has to be near the map but should not overlap on countries so that it does not mess with the ability for someone to hover over any country they want</span></li>
+                            </ul>
+                        </li>
+                        <p></p><li><span >Scale</span><p></p>
+                            <ul style="list-style-type: square;">
+                                <li><span >The scale is continuous as the scores range from about 2 to 8, 
+                                  and that is reflected on the map. Countries with no scores 
+                                  (unavailable data) is marked very light and the tooltip reveals 
+                                  that the data is unavailable to prevent confusion. The colors are split for each
+                                point range so that users can mentally group the countries with similar scores 
+                              to make it easier for them to read. In a sense, the scores were binned based on their 
+                            first digit when being encoded in relation to the color scheme</span></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </p>
+        <br>
+            <h5>Storyboard</h5>
+            <p>
+                I then sketched out a storyboard to visualize what I had in my head.
+                 This was the starting point of my visualization before I started coding and using D3.js. <br><br>
+              
+                 <img src="storyboard.jpeg" alt="Image of storyboard">
+            </p> 
+            
+            <h5>Development Process</h5><p></p>
+            <p>
+                I did this assignment in the span of a week and spent around 24 hours on it. Here are the steps I took:
+            </p>
+            <ol>
+              <li><span >D3 Research (2 hours)</span><p></p>
+                  <ul style="list-style-type: disc;">
+                      <li><span >I did some research to try to learn more about D3 and the coding conventions and syntax, as well as exploring different interactive visualization techniques that I can use for this assignment. I went with a choropleth map.</span><br></li>
+                      <p></p>
+                  </ul>
+              </li>
+              <li><span >Dataset selection (30 minutes)</span><p></p>
+                  <ul style="list-style-type: disc;">
+                      <li><span >I went on Kaggle.com to look for interesting datasets and found this one. To narrow down the focus, I used the rank and score variables.</span></li>
+                      <p></p></ul>
+              </li>
+              <li><span >Ideation (1 hour)</span><p></p>
+                  <ul style="list-style-type: disc;">
+                      <li><span >I thought about the features I wanted to incorporate and created a rough draft through a storyboard to figure out the scope of my project. I am doing this assignment alone, so I had to keep that in mind since I was also new to D3.</span></li>
+                      <p></p></ul>
+              </li>
+              <li><span >Data cleaning (7 hours)</span><p></p>
+                  <ul style="list-style-type: disc;">
+                      <li><span >There was a lot of data cleaning involved and I had to merge the happiness dataset with the world.geojson for the choropleth map by joining the two through country codes. This was one of the most challenging parts
+                         of the project as I had to write a python script to add the ranks and scores as new additional properties of each country.</span></li>
+                      <p></p></ul>
+              </li>
+              <li><span >Coding the visualization (10 hours)</span><p></p>
+                  <ul style="list-style-type: disc;">
+                      <li><span >This took a very long time as I was learning D3 as I went. 
+                        I had to learn how to debug, code in Javascript, and figure out D3 conventions so this took a lot of time. 
+                        I read a lot of documentation and learned a lot too. </span><span style="font-family:Wingdings;color:black;"><span style="font-family:Wingdings;"></span></span>
+                        <br>
+                        <p></p>
+                        Here is what my script looks like: <br> <p></p> <img src="codescript.png" alt="Python Code Script"></li>
+                      <p></p></ul>
+              </li>
+              <li><span >Write up and wrap up (4 hours)</span><p></p>
+                  <ul style="list-style-type: disc;">
+                      <li><span >The writeup took about 2 hours to complete and I am currently putting together the website for easy access.</span></li>
+                      <p></p></ul>
+              </li>
+          </ol>
+        </p>
+<br>
+            <h5>Final Visualization</h5>
+            <p>
+                My storyboard looked pretty similar to my final visualization, 
+                except that it is now interactive and that the location of the country and happiness data on click is 
+                now shown relative to the position of the cursor (on hover) rather than a set position on the top right of the map. 
+                This is done so that the user does not have to constantly look away from the cursor to the top left for more 
+                information and reduces cognitive overhead. I also did not end up doing a play – pause button due to time constraints,
+                 but it definitely is possible to do in the future or if I had more time left. 
+            </p>
+            <br>
+           
+            <h5>Reflections </h5>
+            <p>
+                I really enjoyed doing this assignment although the D3 part was frustrating at times. I learned a lot from this project, and this really sparked my interest in data visualization. If I had more time, I definitely would have made a more elaborate and expressive visualization, but I think this is a great D3 trial run for me. I can see how learning D3 can be useful in the future and I now have a better grasp of how to utilize data visualization techniques to ensure that the information you’re conveying is understandable and works as intended. I learned a lot about expressiveness and effectiveness as well. 
+            </p>
+            <br>
+            <h5>Future Work</h5>
+            <p>
+                In the future, a zoom feature should be added so users can zoom in and out to or from a particular country or region if they want to. A couple filters such as regions or continents could also be added if users were curious about the aggregate data of a particular region. I also think that it would be cool to add the rankings of the country as an additional visualization or to add the relationships between certain variables that the happiness score is composed of such as GDP per capita, freedom and generosity, maybe in an interactive scatter plot. Another feature is to have information boxes where users can maybe select 2 countries and the information is displayed there and changes as they slide through the years so that they can compare the stats of two countries. 
+            </p>
+            <br>
+            <br>
+            <div class="container">
+                <div class="row">
+                  <div class="col text-center">
+                    <a  class="btn btn-primary mr-5" href="index.html#dataviz" role="button">Click to go back to the visualization</a>
+                    <a  class="btn btn-primary" href="thanks.html" role="button">Click when done reviewing assignment</a>
+                  </div>
+                </div>
+              </div>
+           
+        
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer> <br><br><br></footer>
+</html>

@@ -1,0 +1,523 @@
+<html>
+  <head>
+    
+    <title>DataViz A3 - Jasmine Widodo</title>
+
+    <script src="http://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+    <script src="d3-tip.js"></script>
+    <script src="d3-legend.js"></script>
+
+    <script src="happy_index.geojson"></script>
+    <link rel="stylesheet" href="index_style.css" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav id="navv" class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+      <div
+        class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"
+      >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"></li>
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Visualization</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="report.html">Write-up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="thanks.html">Thank You</a>
+          </li>
+        </ul>
+      </div>
+      <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#"
+          >Assignment 3: Interactive Visualization</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target=".dual-collapse2"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link">Jasmine Widodo</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <br />
+    <div id="blocker"></div>
+    <h2>The Geography of Happiness</h2>
+    <h5 style="text-align: center;">Data Visualization</h5>
+<br>  
+<div class="element" id="left">
+      <h5><b>Background</b></h5>
+      <p></p>
+      <p>
+        The World Happiness Report is a landmark survey of the state of global happiness 
+        that scores and ranks 156 countries by how happy their citizens perceive themselves to be. 
+        The World Happiness Report scores and ranks cities around the world
+         by their subjective well-being and digs more deeply into how the social, urban 
+         and natural environments combine to affect our happiness. The report proceeds to
+        pick up worldwide
+        acknowledgment as governments, organizations and respectful society
+        progressively utilize joy pointers to educate their policy-making
+        choices. 
+      </p>
+     <p></p>
+      <h5><b>Rationale</b></h5>
+      <p></p>
+      <p>For this assignment, I was curious about using choropleth maps and sliders,
+         so I looked for datasets that would be a good match for this type of interactive visualization
+          technique. I found this dataset super interesting and felt like it
+           would be a great choice to use for this assignment because I can utilize the interactive
+            component of this assignment to optimize for expressiveness using the scores and ranks of different countries
+             in this world throughout the years to be able to see if there are any major changes 
+             or interesting trends. I think for this year and last year especially, looking at the change in scores would be interesting 
+             due to the current change the world is going through due to the global pandemic.
+             To narrow down the scope of this project and to stick with my initial selection of using a 
+             choropleth map, I decided to focus on the overall scores instead of 
+            the different factors that contributed to the scores. </p>
+    </div>
+    <div class="element" id="mid"></div>
+    <div class="element" id="right">
+      <h5><b>Content</b></h5>
+      <p></p>
+      <p>
+        This dataset contains the Happiness Score for the countries along with the
+        factors used to explain the score. The Happiness Score is a national
+        average of the responses to the main life evaluation question asked in
+        the Gallup World Poll (GWP), which uses the Cantril Ladder. 
+      </p>
+      <p>The
+        Happiness Score is explained by the following factors: 
+        <ul>
+          <li>GDP per capita</li>
+          <li>Healthy Life Expectancy</li>
+          <li>Social support</li>
+          <li>Freedom to make life choices</li>
+          <li>Generosity</li>
+          <li>Corruption</li>
+          <li>Perception</li>
+          <li>Residual error</li>
+        </ul>
+   
+           For more details regarding the dataset, 
+           please visit <a href="https://worldhappiness.report/">worldhappiness.report</a> and <a href="https://www.kaggle.com/mathurinache/world-happiness-report">https://www.kaggle.com/mathurinache/world-happiness-report</a>.</p>
+    </div>
+    
+    <div id="smallblocker"></div>
+  <div id="dataviz" ></div>    <div id="blocker"></div>
+
+<div ><h4 id="titlegraph" >Happiness Score by Country</h4>
+  
+  <p id="dgraph">Self reported data where the higher the score, the happier a country is. <br></p></div>
+    <div id="sliderContainer">
+      <input
+        id="timeslide"
+        type="range"
+        min="0"
+        max="5"
+        value="0"
+        step="1"
+      />
+      
+      <br>
+      <span id="range">2015</span>
+    </div>
+
+    <script>
+      var width = 1100;
+      var height = 700;
+
+      var inputValue = null;
+      var year = ["2015", "2016", "2017", "2018", "2019", "2020"];
+
+      var svg = d3
+        .select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+        // var colorScale = d3
+        // .scaleLinear()
+        // .domain([2,3,4,5,6,7, 8])
+        // .range(d3.schemeBlues[6]);
+        
+        // var colorScale = d3
+        // .scaleLinear()
+        // .domain([2, 8])
+        // .range(["#eff3ff", "#08519c"]);
+
+      var colorScale = d3
+        .scaleThreshold()
+        .domain([1, 2, 3, 4, 5, 6, 7, 8])
+        .range(d3.schemeBlues[8]);
+
+      var g = svg.append("g");
+
+      var svg = d3.select("svg");
+
+      svg
+        .append("g")
+        .attr("class", "legendLinear")
+        .attr("id", "legend")
+        .attr("transform", "translate(150,440)");
+
+      var legendLinear = d3
+        .legendColor()
+        .title("Happiness Score Scale")
+        .shapeWidth(20)
+        .shapePadding(0)
+        .orient("horizontal")
+        .scale(colorScale)
+        .labels([" ",
+        "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+        
+         
+        ]);
+
+      svg.select(".legendLinear").call(legendLinear);
+
+      var tip = d3
+        .tip()
+        .attr("class", "d3-tip")
+        .offset([5, 10])
+        // .html(function (d) {
+        //   // return "Happiness Score: " + data.get(d.id);
+        //   return "Happiness Score: " + d.name;
+        .html(function (d) {
+          return currValue(d, document.getElementById("range").innerHTML);
+          console.log("hi");
+        });
+
+      svg.call(tip);
+
+      var gProjection = d3
+        .geoMercator()
+        .scale(140)
+        .center([0, 25])
+        .translate([width / 2, height / 2]);
+
+      var geoPath = d3.geoPath().projection(gProjection);
+
+      g.selectAll("path")
+        .data(happy_index_json.features)
+        .enter()
+        .append("path")
+        .attr("fill", initialState)
+        .attr("stroke", "#ccc")
+        .attr("d", geoPath);
+
+      var ranks = svg.append("g");
+
+      var path = ranks
+        .selectAll("path")
+        .data(happy_index_json.features)
+        .enter()
+        .append("path")
+        .attr("fill", initialState)
+        .attr("stroke", "#ccc")
+        .attr("d", geoPath)
+        .attr("class", "country")
+        .on("mouseover", function (data) {
+          // d3.selectAll(".country")
+          //   .transition()
+          //   .duration(100)
+          //   .style("opacity", .1);
+          // d3.select(this).transition().duration(100).style("opacity", 0.1);
+          d3.select(this).attr("class", "hover");
+          tip.show(data);
+        })
+        .on("mouseout", function (data) {
+          d3.selectAll(".country")
+            .transition()
+            .duration(200)
+            .style("opacity", 1);
+          d3.select(this)
+            .transition()
+            .duration(100)
+            .style("stroke", "transparent");
+          d3.select(this).attr("class", "country");
+          tip.hide(data);
+        });
+
+      // when the input range changes update the value
+      d3.select("#timeslide").on("input", function () {
+        update(+this.value);
+      });
+
+      // update the fill of each SVG of class "incident"
+      function update(value) {
+        document.getElementById("range").innerHTML = year[value];
+        inputValue = year[value];
+        d3.selectAll(".country").attr("fill", yearMatch);
+      }
+
+      function yearMatch(data) {
+        if (inputValue == "2015") {
+          if (
+            data.properties.fifteen == "null" ||
+            data.properties.fifteen == undefined
+          ) {
+            return "#f8fcfc";
+          } else {
+            return colorScale(data.properties.fifteen);
+          }
+        } else if (inputValue == "2016") {
+          if (
+            data.properties.sixteen == "null" ||
+            data.properties.sixteen == undefined
+          ) {
+            return "#f8fcfc";
+          } else {
+            return colorScale(data.properties.sixteen);
+          }
+        } else if (inputValue == "2017") {
+          if (
+            data.properties.seventeen == "null" ||
+            data.properties.seventeen == undefined
+          ) {
+            return "#f8fcfc";
+          } else {
+            return colorScale(data.properties.seventeen);
+          }
+        } else if (inputValue == "2018") {
+          if (
+            data.properties.eighteen == "null" ||
+            data.properties.eighteen == undefined
+          ) {
+            return "#f8fcfc";
+          } else {
+            return colorScale(data.properties.eighteen);
+          }
+        } else if (inputValue == "2019") {
+          if (
+            data.properties.nineteen == "null" ||
+            data.properties.nineteen == undefined
+          ) {
+            return "#f8fcfc";
+          } else {
+            return colorScale(data.properties.nineteen);
+          }
+        } else if (inputValue == "2020") {
+          if (
+            data.properties.twenty == "null" ||
+            data.properties.twenty == undefined
+          ) {
+            return "#f8fcfc";
+          } else {
+            return colorScale(data.properties.twenty);
+          }
+        }
+      }
+
+      function currValue(data, year) {
+        if (year == "2015") {
+          if (
+            data.properties.fifteen == "null" ||
+            data.properties.fifteen == undefined
+          ) {
+            return (
+              "Country: " + data.properties.name + "<br> Data Unavailable."
+            );
+          } else {
+            return (
+              "Country: " +
+              data.properties.name +
+              "<br>" +
+              "Happiness Score: " +
+              Number(data.properties.fifteen).toFixed(2) +
+              "<br>" +
+              "Happiness Rank: " +
+              data.properties.rank15
+            );
+          }
+        } else if (inputValue == "2016") {
+          if (
+            data.properties.sixteen == "null" ||
+            data.properties.sixteen == undefined
+          ) {
+            return (
+              "Country: " + data.properties.name + "<br> Data Unavailable."
+            );
+          } else {
+            return (
+              "Country: " +
+              data.properties.name +
+              "<br>" +
+              "Happiness Score: " +
+              Number(data.properties.sixteen).toFixed(2) +
+              "<br>" +
+              "Happiness Rank: " +
+              data.properties.rank16
+            );
+          }
+        } else if (inputValue == "2017") {
+          if (
+            data.properties.seventeen == "null" ||
+            data.properties.seventeen == undefined
+          ) {
+            return (
+              "Country: " + data.properties.name + "<br> Data Unavailable."
+            );
+          } else {
+            return (
+              "Country: " +
+              data.properties.name +
+              "<br>" +
+              "Happiness Score: " +
+              Number(data.properties.seventeen).toFixed(2) +
+              "<br>" +
+              "Happiness Rank: " +
+              data.properties.rank17
+            );
+          }
+        } else if (inputValue == "2018") {
+          if (
+            data.properties.eighteen == "null" ||
+            data.properties.eighteen == undefined
+          ) {
+            return (
+              "Country: " + data.properties.name + "<br> Data Unavailable."
+            );
+          } else {
+            return (
+              "Country: " +
+              data.properties.name +
+              "<br>" +
+              "Happiness Score: " +
+              Number(data.properties.eighteen).toFixed(2) +
+              "<br>" +
+              "Happiness Rank: " +
+              data.properties.rank18
+            );
+          }
+        } else if (inputValue == "2019") {
+          if (
+            data.properties.nineteen == "null" ||
+            data.properties.nineteen == undefined
+          ) {
+            return (
+              "Country: " + data.properties.name + "<br> Data Unavailable."
+            );
+          } else {
+            return (
+              "Country: " +
+              data.properties.name +
+              "<br>" +
+              "Happiness Score: " +
+              Number(data.properties.nineteen).toFixed(2) +
+              "<br>" +
+              "Happiness Rank: " +
+              data.properties.rank19
+            );
+          }
+        } else if (inputValue == "2020") {
+          if (
+            data.properties.twenty == "null" ||
+            data.properties.twenty == undefined
+          ) {
+            return (
+              "Country: " + data.properties.name + "<br> Data Unavailable."
+            );
+          } else {
+            return (
+              "Country: " +
+              data.properties.name +
+              "<br>" +
+              "Happiness Score: " +
+              Number(data.properties.twenty).toFixed(2) +
+              "<br>" +
+              "Happiness Rank: " +
+              data.properties.rank20
+            );
+          }
+        }
+      }
+
+      function initialState(data) {
+        if (document.getElementById("range").innerHTML == "2015") {
+          if (data.properties.fifteen == undefined) {
+            return "#f8fcfc";
+          } else if (
+            data.properties.name == "Namibia" ||
+            data.properties.name == "Somalia" ||
+            data.properties.name == "South Sudan"
+          ) {
+            return "#f8fcfc";
+          } else {
+            return colorScale(data.properties.fifteen);
+          }
+        }
+      }
+    </script>
+     <div id="blocker"></div>
+     <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <a  class="btn btn-primary mr-5" href="report.html" role="button">Click here for write-up</a>
+         
+          <a  class="btn btn-primary" href="thanks.html" role="button">Click when done reviewing assignment</a>
+        </div>
+      </div>
+    </div>
+    <div id="blocker"></div>
+    
+
+
+<footer>
+
+</footer>
+  </body>
+</html>
